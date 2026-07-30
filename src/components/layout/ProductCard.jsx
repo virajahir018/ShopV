@@ -1,6 +1,6 @@
 
 import Link from "next/link";
-import WishlistButton from "./product/WishlistButton";
+import WishlistButton from "../product/WishlistButton";
 
 export default function ProductCard({ product }) {
 

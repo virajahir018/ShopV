@@ -1,7 +1,7 @@
 "use client";
 
 import { useSelector } from "react-redux";
-import ProductCard from "../ProductCard";
+import ProductCard from "../layout/ProductCard";
 import Link from "next/link";
 
 export default function FeaturedProducts() {
