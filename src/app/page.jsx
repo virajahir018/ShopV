@@ -6,7 +6,6 @@ import BrandSection from "@/components/home/BrandSection";
 import CategorySection from "@/components/home/CategorySection";
 import DealsSection from "@/components/home/DealsSection";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
-import ProductGrid from "@/components/layout/ProductGrid";
 import { useSelector } from "react-redux";
 
 export default function Page() {
@@ -20,12 +19,10 @@ export default function Page() {
           <CategorySection />
           <BrandSection />
           <DealsSection />
-          <FeaturedProducts />
         </>
       )}
 
-      <ProductGrid />
-
+      <FeaturedProducts />
       {!search && <Footer />}
     </div>
   );
