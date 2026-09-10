@@ -13,17 +13,22 @@ export default function Page() {
 
   return (
     <div>
+
       {!search && (
         <>
           <HeroSlider />
-          <CategorySection />
-          <BrandSection />
           <DealsSection />
+
         </>
       )}
 
       <FeaturedProducts />
-      {!search && <Footer />}
+
+      {!search && <>
+        <BrandSection />
+        <CategorySection />
+        <Footer />
+      </>}
     </div>
   );
 }

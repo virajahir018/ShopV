@@ -14,11 +14,11 @@ const cartSlice = createSlice({
             const existingProduct = state.items.find((item) => item.id === action.payload.id);
 
             if (existingProduct) {
-                existingProduct.quantity += 1;
+                existingProduct.quantity += action.payload.quantity || 1;
             } else {
                 state.items.push({
                     ...action.payload,
-                    quantity: 1,
+                    quantity: action.payload.quantity || 1,
                 });
             }
         },

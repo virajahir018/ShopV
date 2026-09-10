@@ -20,9 +20,19 @@ export default function CartPage() {
       </h1>
 
       {items.length === 0 ? (
-        <h2 className="text-center text-xl font-semibold">
-          Your Cart is Empty 😢
-        </h2>
+        <div className="text-center py-12">
+          <h2 className="text-center text-2xl font-semibold text-gray-600 mb-4">
+            Your Cart is Empty 😢
+          </h2>
+          <p className="text-gray-500 mb-6">
+            Add some products to your cart to get started!
+          </p>
+          <Link href="/products">
+            <button className="rounded-lg bg-pink-600 px-6 py-3 text-white font-semibold hover:bg-pink-700 transition">
+              Continue Shopping
+            </button>
+          </Link>
+        </div>
       ) : (
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 ">
           {items.map((item) => (
@@ -30,7 +40,6 @@ export default function CartPage() {
               key={item.id}
               className="flex flex-col gap-6 rounded-xl bg-white p-5 shadow-lg transition hover:shadow-xl md:flex-row"
             >
-              {/* Image */}
               <div className="flex justify-center md:block">
                 <Image
                   src={item.image}
@@ -41,7 +50,6 @@ export default function CartPage() {
                 />
               </div>
 
-              {/* Product Info */}
               <div className="flex-1 text-center md:text-left">
                 <h2 className="text-2xl font-bold">
                   {item.brand}
@@ -69,7 +77,6 @@ export default function CartPage() {
                   ⭐ {item.rating}
                 </p>
 
-                {/* Quantity */}
                 <div className="mt-5 flex items-center justify-center gap-4 md:justify-start">
                   <button
                     onClick={() =>
@@ -95,7 +102,6 @@ export default function CartPage() {
                 </div>
               </div>
 
-              {/* Price & Remove */}
               <div className="flex flex-col items-center justify-between gap-4 md:items-end">
                 <button
                   onClick={() =>
@@ -113,7 +119,6 @@ export default function CartPage() {
             </div>
           ))}
 
-          {/* Grand Total */}
           <div className="rounded-xl flex flex-col justify-between bg-white p-13 shadow-lg">
             <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
               <h2 className="text-2xl font-bold">

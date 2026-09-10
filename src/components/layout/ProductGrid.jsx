@@ -14,13 +14,43 @@ export default function ProductGrid() {
     (state) => state.products.sort
   );
 
+  const selectedCategories = useSelector(
+    (state) => state.products.category
+  );
+
+  const selectedBrands = useSelector(
+    (state) => state.products.brands
+  );
+
+  const minRating = useSelector(
+    (state) => state.products.rating
+  );
+
+  const maxPrice = useSelector(
+    (state) => state.products.maxPrice
+  );
+
   const searchTerm = search.toLowerCase();
 
   let filteredProducts = products.filter((product) => {
-    return (
+    // Search filter
+    const matchesSearch = 
       product.title.toLowerCase().includes(searchTerm) ||
-      product.brand.toLowerCase().includes(searchTerm)
-    );
+      product.brand.toLowerCase().includes(searchTerm);
+
+    // Category filter
+    const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category);
+
+    // Brand filter
+    const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(product.brand);
+
+    // Rating filter
+    const matchesRating = product.rating >= minRating;
+
+    // Price filter
+    const matchesPrice = product.price <= maxPrice;
+
+    return matchesSearch && matchesCategory && matchesBrand && matchesRating && matchesPrice;
   });
 
   // Sort
@@ -51,6 +81,10 @@ export default function ProductGrid() {
             ? `Search Results for "${search}"`
             : "Trending Products"}
         </h2>
+
+        <p className="text-gray-600">
+          {filteredProducts.length} products found
+        </p>
       </div>
 
       <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 lg:grid-cols-4">

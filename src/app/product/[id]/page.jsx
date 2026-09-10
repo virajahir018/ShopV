@@ -3,11 +3,13 @@
 import { useSelector } from "react-redux";
 import { notFound, useParams } from "next/navigation";
 import Image from "next/image";
+import { useState } from "react";
 import AddToCartButton from "@/components/product/AddToCartButton";
 import WishlistButton from "@/components/product/WishlistButton";
 
 export default function ProductDetails() {
   const { id } = useParams();
+  const [quantity, setQuantity] = useState(1);
 
   const products = useSelector((state) => state.products.items);
 
@@ -18,6 +20,11 @@ export default function ProductDetails() {
   if (!product) {
     notFound();
   }
+
+  const handleAddToCart = (qty) => {
+    const productWithQty = { ...product, quantity: qty };
+    return productWithQty;
+  };
 
   return (
     <section className="mx-auto max-w-8xl px-4 py-8 sm:px-6 lg:px-8">
@@ -71,12 +78,21 @@ export default function ProductDetails() {
               Quantity
             </label>
 
-            <select className="mt-2 ml-2 w-13 rounded-md border border-gray-300 px-1 py-1 shadow-sm outline-none focus:border-pink-500">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <select 
+              value={quantity}
+              onChange={(e) => setQuantity(Number(e.target.value))}
+              className="mt-2 ml-2 w-16 rounded-md border border-gray-300 px-2 py-2 shadow-sm outline-none focus:border-pink-500"
+            >
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+              <option value={5}>5</option>
+              <option value={6}>6</option>
+              <option value={7}>7</option>
+              <option value={8}>8</option>
+              <option value={9}>9</option>
+              <option value={10}>10</option>
             </select>
           </div>
 
@@ -95,7 +111,7 @@ export default function ProductDetails() {
 
           {/* Add To Cart */}
           <div className="mt-8">
-            <AddToCartButton product={product} />
+            <AddToCartButton product={product} quantity={quantity} />
           </div>
         </div>
 

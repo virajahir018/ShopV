@@ -14,6 +14,10 @@ const categories = [
   "Women",
   "Kids",
   "Footwear",
+  "Beauty",
+  "Watches",
+  "Bags",
+  "Sports",
 ];
 
 const brands = [
@@ -21,6 +25,12 @@ const brands = [
   "Puma",
   "Tokyo Talkies",
   "Lavie",
+  "Nike",
+  "H&M",
+  "Levi's",
+  "Zara",
+  "Fossil",
+  "Mothercare",
 ];
 
 export default function FilterSidebar() {
@@ -74,7 +84,7 @@ export default function FilterSidebar() {
 
         <button
           onClick={() => dispatch(clearFilters())}
-          className="text-sm font-semibold text-pink-600"
+          className="text-sm font-semibold text-pink-600 hover:text-pink-700"
         >
           Clear
         </button>
@@ -89,12 +99,12 @@ export default function FilterSidebar() {
           Category
         </h3>
 
-        <div className="space-y-2">
+        <div className="space-y-2 max-h-48 overflow-y-auto">
 
           {categories.map((item) => (
             <label
               key={item}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 cursor-pointer hover:text-pink-600"
             >
               <input
                 type="checkbox"
@@ -102,6 +112,7 @@ export default function FilterSidebar() {
                 onChange={() =>
                   toggleCategory(item)
                 }
+                className="cursor-pointer"
               />
 
               {item}
@@ -121,12 +132,12 @@ export default function FilterSidebar() {
           Brand
         </h3>
 
-        <div className="space-y-2">
+        <div className="space-y-2 max-h-48 overflow-y-auto">
 
           {brands.map((item) => (
             <label
               key={item}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 cursor-pointer hover:text-pink-600"
             >
               <input
                 type="checkbox"
@@ -134,6 +145,7 @@ export default function FilterSidebar() {
                 onChange={() =>
                   toggleBrand(item)
                 }
+                className="cursor-pointer"
               />
 
               {item}
@@ -156,7 +168,7 @@ export default function FilterSidebar() {
         <input
           type="range"
           min="500"
-          max="5000"
+          max="10000"
           step="100"
           value={maxPrice}
           onChange={(e) =>
@@ -164,10 +176,10 @@ export default function FilterSidebar() {
               setMaxPrice(Number(e.target.value))
             )
           }
-          className="w-full"
+          className="w-full accent-pink-600"
         />
 
-        <p className="mt-2 font-semibold">
+        <p className="mt-2 font-semibold text-pink-600">
           ₹{maxPrice}
         </p>
 
@@ -183,10 +195,27 @@ export default function FilterSidebar() {
 
         <div className="space-y-2">
 
+          <label
+            className="flex items-center gap-2 cursor-pointer hover:text-pink-600"
+          >
+            <input
+              type="radio"
+              name="rating"
+              checked={rating === 0}
+              onChange={() =>
+                dispatch(setRating(0))
+              }
+              className="cursor-pointer"
+            />
+
+            All Ratings
+
+          </label>
+
           {[4, 3, 2, 1].map((item) => (
             <label
               key={item}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 cursor-pointer hover:text-pink-600"
             >
               <input
                 type="radio"
@@ -195,6 +224,7 @@ export default function FilterSidebar() {
                 onChange={() =>
                   dispatch(setRating(item))
                 }
+                className="cursor-pointer"
               />
 
               {item} ★ & Above

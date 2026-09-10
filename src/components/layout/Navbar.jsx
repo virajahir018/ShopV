@@ -4,20 +4,27 @@ import Link from "next/link";
 import {
   Search,
   Heart,
-  ShoppingBag,
   ShoppingCart,
+  LogOut,
+  User,
 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearch } from "@/redux/slices/searchSlice";
+import { logoutUser } from "@/redux/slices/userSlice";
 
 export default function Navbar() {
   const dispatch = useDispatch();
 
   const items = useSelector((state) => state.cart.items);
   const search = useSelector((state) => state.search.value);
+  const { user, isLoggedIn } = useSelector((state) => state.user);
 
   const clearSearch = () => {
     dispatch(setSearch(""));
+  };
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
   };
 
   return (
@@ -72,13 +79,6 @@ export default function Navbar() {
 
         {/* Icons */}
         <div className="flex justify-center gap-6 font-semibold">
-          <Link href="/add-product">
-            <div className="flex cursor-pointer flex-col items-center text-xs">
-              <ShoppingBag size={22} />
-              <span className="hidden sm:block">Add Product</span>
-            </div>
-          </Link>
-
           <Link href="/wishlist">
             <div className="flex cursor-pointer flex-col items-center text-xs">
               <Heart size={22} />
@@ -94,6 +94,32 @@ export default function Navbar() {
               </span>
             </div>
           </Link>
+
+          {isLoggedIn ? (
+            <>
+              <Link href="/profile">
+                <div className="flex cursor-pointer flex-col items-center text-xs">
+                  <User size={22} />
+                  <span className="hidden sm:block">Profile</span>
+                </div>
+              </Link>
+
+              <button
+                onClick={handleLogout}
+                className="flex cursor-pointer flex-col items-center text-xs hover:text-pink-600 transition"
+              >
+                <LogOut size={22} />
+                <span className="hidden sm:block">Logout</span>
+              </button>
+            </>
+          ) : (
+            <Link href="/login">
+              <div className="flex cursor-pointer flex-col items-center text-xs">
+                <User size={22} />
+                <span className="hidden sm:block">Login</span>
+              </div>
+            </Link>
+          )}
         </div>
       </div>
     </nav>

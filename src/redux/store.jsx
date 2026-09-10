@@ -4,6 +4,7 @@ import searchReducer from './slices/searchSlice'
 import wishlistReducer from './slices/wishlistSlice'
 import productReducer from './slices/productSlice'
 import orderReducer from './slices/orderSlice'
+import userReducer from './slices/userSlice'
 import {
     persistStore,
     persistReducer,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
     wishlist: wishlistReducer,
     products: productReducer,
     orders: orderReducer,
+    user: userReducer,
 });
 
 const persistConfig = {
