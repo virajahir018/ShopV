@@ -25,7 +25,7 @@ export default function Hero() {
         {/* Right Image */}
         <div className="flex justify-center">
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiUNIO_y03vzgKYHdWVbH0enPtEKdyHR6kVIPMNCZlkQ&s=10"
+            src="/images/banner1.jpg"
             alt="Fashion"
             className="w-100% max-w-xs rounded-xl shadow-lg sm:max-w-sm md:max-w-md lg:max-w-lg"
           />

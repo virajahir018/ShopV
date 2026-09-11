@@ -56,7 +56,7 @@ const initialState = {
       originalPrice: 2199,
       discount: "41% OFF",
       rating: 4.4,
-      image: "/images/product5.jpg",
+      image: "/images/product4.jpg",
     },
     {
       id: 6,
@@ -67,7 +67,7 @@ const initialState = {
       originalPrice: 3199,
       discount: "41% OFF",
       rating: 4.5,
-      image: "/images/product6.jpg",
+      image: "/images/categories/men.jpg",
     },
     {
       id: 7,
@@ -78,7 +78,7 @@ const initialState = {
       originalPrice: 1499,
       discount: "47% OFF",
       rating: 4.2,
-      image: "/images/product7.jpg",
+      image: "/images/categories/men.jpg",
     },
     {
       id: 8,
@@ -89,7 +89,7 @@ const initialState = {
       originalPrice: 5999,
       discount: "42% OFF",
       rating: 4.7,
-      image: "/images/product8.jpg",
+      image: "/images/categories/footwear.jpg",
     },
     {
       id: 9,
@@ -100,7 +100,7 @@ const initialState = {
       originalPrice: 2499,
       discount: "40% OFF",
       rating: 4.6,
-      image: "/images/product9.jpg",
+      image: "/images/categories/beauty.jpg",
     },
     {
       id: 10,
@@ -111,7 +111,7 @@ const initialState = {
       originalPrice: 7999,
       discount: "37% OFF",
       rating: 4.5,
-      image: "/images/product10.jpg",
+      image: "/images/categories/watches.jpg",
     },
     {
       id: 11,
@@ -122,7 +122,7 @@ const initialState = {
       originalPrice: 1299,
       discount: "54% OFF",
       rating: 4.3,
-      image: "/images/product11.jpg",
+      image: "/images/categories/kids.jpg",
     },
     {
       id: 12,
@@ -133,7 +133,7 @@ const initialState = {
       originalPrice: 899,
       discount: "50% OFF",
       rating: 4.4,
-      image: "/images/product12.jpg",
+      image: "/images/categories/women.jpg",
     },
   ],
   sort: "default",

@@ -2,12 +2,20 @@
 
 import { addToCart } from '@/redux/slices/cartSlice';
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useRouter } from 'next/navigation';
 
 function AddToCartButton({ product, quantity = 1 }) {
     const dispatch = useDispatch();
+    const router = useRouter();
+    const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
     const handleAddCart = () => {
+        if (!isLoggedIn) {
+            router.push('/login');
+            return;
+        }
+
         const productWithQty = { ...product, quantity };
         dispatch(addToCart(productWithQty));
         alert(`✅ ${quantity} item(s) added to cart!`);
